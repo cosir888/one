@@ -11,13 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: 查看当前文件
       run: ls
     - name: PyInstaller Linux amd64
       id: amd64
       uses: action-python/pyinstaller-py3.7@amd64
       with:
-        path: .
-
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
