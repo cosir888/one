@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
+      run: ls
     - name: PyInstaller Linux amd64
       id: amd64
       uses: action-python/pyinstaller-py3.7@amd64
@@ -28,7 +28,7 @@ jobs:
         release_name: Release ${{ github.ref }}
         draft: false
         prerelease: false
-      run:ls
+      
     - name: Upload Linux File amd64
       uses: actions/upload-release-asset@v1
       env:
