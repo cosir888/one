@@ -4,7 +4,18 @@ on:
   push:
 jobs:
   build:
-    runs-on: ubuntu-latest
+   # runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - goarch: amd64
+            goos: linux
+          - goarch: amd64
+            goos: darwin
+          - goarch: arm64
+            goos: linux
+          - goarch: arm64
+            goos: darwin
     steps:
     - uses: actions/checkout@master
     - name: 打包当前文件
