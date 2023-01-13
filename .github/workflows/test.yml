@@ -1,17 +1,21 @@
 name: Make release with Build binaries
 
-on:push
+on:
+  push:
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
     - name: 查看当前文件
-      run: ls
+      run: |
+        ls
     - name: PyInstaller Linux amd64
       id: amd64
       uses: action-python/pyinstaller-py3.7@amd64
       with:
+        path: .
+
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -22,7 +26,7 @@ jobs:
         release_name: Release ${{ github.ref }}
         draft: false
         prerelease: false
-      
+
     - name: Upload Linux File amd64
       uses: actions/upload-release-asset@v1
       env:
