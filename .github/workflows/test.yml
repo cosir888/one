@@ -31,15 +31,15 @@ jobs:
        # prerelease: false
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v1
-        with:
-            tag_name: V0.1 # 你也可以将其输入为V1.2……
-            name: V0.1 # 你也可以将其输入为V1.2……
-            body: TODO New Release.
-            draft: false  # 是否是草稿
-            prerelease: true # 是否是预览版
-            files: |
+      with:
+          tag_name: V0.1 # 你也可以将其输入为V1.2……
+          name: V0.1 # 你也可以将其输入为V1.2……
+          body: TODO New Release.
+          draft: false  # 是否是草稿
+          prerelease: true # 是否是预览版
+          files: |
             # 你要上传的文件
-                dist/*
+              dist/*
 
     #- name: Upload Linux File amd64
      # uses: actions/upload-release-asset@v1
