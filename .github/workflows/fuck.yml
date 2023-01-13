@@ -23,6 +23,7 @@ jobs:
       run: |
         pip install pyinstaller
         pyinstaller -F *.py
+        tar -zcvf hi.tar.gz dist
         
     - name: 发布打包程序
       uses: softprops/action-gh-release@v1
@@ -33,4 +34,4 @@ jobs:
           draft: false  # 是否是草稿
           prerelease: true # 是否是预览版
           files: |
-              /dist/helloworld*
+              *.tar.gz
