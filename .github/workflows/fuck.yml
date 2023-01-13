@@ -32,5 +32,4 @@ jobs:
           draft: false  # 是否是草稿
           prerelease: true # 是否是预览版
           files: |
-            # 你要上传的文件
-              dist/*
+              *
