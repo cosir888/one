@@ -5,9 +5,42 @@ on: [push]
 jobs:
   linux:
     runs-on: ubuntu-latest
-    
+    steps:
+    - uses: actions/checkout@master
+    - name: 打包当前文件
+      run: |
+        pip install pyinstaller
+        pyinstaller -F *.py
+    - name: Create Release and Upload Release Asset
+      uses: softprops/action-gh-release@v1
+      with:
+          tag_name: V0.${{ github.run_id }}.dev #V0.1 # 你也可以将其输入为V1.2……
+          name: V0.${{ github.run_id }}.dev #V0.1 # 你也可以将其输入为V1.2……
+          body: 测试自动发布版本号
+          draft: false  # 是否是草稿
+          prerelease: true # 是否是预览版
+          files: |
+              dist/*
+
   windows:
     runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: 打包当前文件
+      run: |
+        pip install pyinstaller
+        pyinstaller -F *.py
+    - name: Create Release and Upload Release Asset
+      uses: softprops/action-gh-release@v1
+      with:
+          tag_name: V0.${{ github.run_id }}.dev #V0.1 # 你也可以将其输入为V1.2……
+          name: V0.${{ github.run_id }}.dev #V0.1 # 你也可以将其输入为V1.2……
+          body: 测试自动发布版本号
+          draft: false  # 是否是草稿
+          prerelease: true # 是否是预览版
+          files: |
+              dist/*
+
     
   mac:
     runs-on: macos-latest
@@ -18,24 +51,6 @@ jobs:
       run: |
         pip install pyinstaller
         pyinstaller -F *.py
-        
-        
-    #- name: PyInstaller Linux amd64
-    #  id: amd64
-    #   uses: action-python/pyinstaller-py3.7@amd64
-    #  with:
-    #    path: .
-
-   # - name: Create Release
-     # id: create_release
-     # uses: actions/create-release@v1
-     # env:
-     #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-     # with:
-       # tag_name: v0.11
-      #  release_name: pythonproxy v0.11
-      #  draft: false
-       # prerelease: false
     - name: Create Release and Upload Release Asset
       uses: softprops/action-gh-release@v1
       with:
