@@ -10,12 +10,11 @@ jobs:
         include:
           - goarch: amd64
             goos: linux
-          - goarch: amd64
-            goos: windows
           - goarch: arm64
             goos: linux
           - goarch: arm64
             goos: darwin
+    fail-fast: true
     steps:
     - uses: actions/checkout@master
     - name: 打包当前文件
