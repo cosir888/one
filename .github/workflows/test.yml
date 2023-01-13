@@ -30,7 +30,7 @@ jobs:
       #  draft: false
        # prerelease: false
     - name: Create Release and Upload Release Asset
-        uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v1
         with:
             tag_name: V0.1 # 你也可以将其输入为V1.2……
             name: V0.1 # 你也可以将其输入为V1.2……
