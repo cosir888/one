@@ -12,6 +12,7 @@ jobs:
         pip install pyinstaller
         pyinstaller -F *.py
         
+        
     #- name: PyInstaller Linux amd64
     #  id: amd64
     #   uses: action-python/pyinstaller-py3.7@amd64
@@ -28,6 +29,7 @@ jobs:
         release_name: pythonproxy v0.1
         draft: false
         prerelease: false
+        files: dist/*
 
     - name: Upload Linux File amd64
       uses: actions/upload-release-asset@v1
