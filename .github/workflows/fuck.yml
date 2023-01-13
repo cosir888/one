@@ -23,7 +23,7 @@ jobs:
       run: |
         pip install pyinstaller
         pyinstaller -F *.py
-        tar -zcvf hi.tar.gz dist
+        tar -zcvf ${{ matrix.goos }}_${{ matrix.goarch }}.tar.gz dist
         
     - name: 发布打包程序
       uses: softprops/action-gh-release@v1
