@@ -1,9 +1,9 @@
-name: Make release with Build binaries
+name: 测试学习发布打包软件
 
-on: [push]
-
+on:
+  push:
 jobs:
-  linux:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -11,55 +11,14 @@ jobs:
       run: |
         pip install pyinstaller
         pyinstaller -F *.py
-    - name: Create Release and Upload Release Asset
-      uses: softprops/action-gh-release@v1
-      with:
-          tag_name: V0.${{ github.run_id }}.dev #V0.1 # 你也可以将其输入为V1.2……
-          name: V0.${{ github.run_id }}.dev #V0.1 # 你也可以将其输入为V1.2……
-          body: 测试自动发布版本号
-          draft: false  # 是否是草稿
-          prerelease: true # 是否是预览版
-          files: |
-              dist/*
-
-  windows:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: 打包当前文件
-      run: |
-        pip install pyinstaller
-        pyinstaller -F *.py
-    - name: Create Release and Upload Release Asset
-      uses: softprops/action-gh-release@v1
-      with:
-          tag_name: V0.${{ github.run_id }}.dev #V0.1 # 你也可以将其输入为V1.2……
-          name: V0.${{ github.run_id }}.dev #V0.1 # 你也可以将其输入为V1.2……
-          body: 测试自动发布版本号
-          draft: false  # 是否是草稿
-          prerelease: true # 是否是预览版
-          files: |
-              dist/*
-
-    
-  mac:
-    runs-on: macos-latest
-    
-    steps:
-    - uses: actions/checkout@master
-    - name: 打包当前文件
-      run: |
-        pip install pyinstaller
-        pyinstaller -F *.py
-    - name: Create Release and Upload Release Asset
-      uses: softprops/action-gh-release@v1
-      with:
-          tag_name: V0.${{ github.run_id }}.dev #V0.1 # 你也可以将其输入为V1.2……
-          name: V0.${{ github.run_id }}.dev #V0.1 # 你也可以将其输入为V1.2……
-          body: 测试自动发布版本号
-          draft: false  # 是否是草稿
-          prerelease: true # 是否是预览版
-          files: |
-              dist/*
-
-    
+        
+    - name: 发布打包程序
+        uses: softprops/action-gh-release@v1
+        with:
+            tag_name: V0.${{ github.run_id }} # 你也可以将其输入为V1.2……
+            name: V0.${{ github.run_id }} # 你也可以将其输入为V1.2……
+            body: TODO New Release.
+            draft: false  # 是否是草稿
+            prerelease: true # 是否是预览版
+            files: |
+                dist/*
