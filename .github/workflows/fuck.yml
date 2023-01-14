@@ -22,6 +22,7 @@ jobs:
     - uses: actions/checkout@master
     - name: 打包当前文件
       run: |
+        uname -a
         pip install pyinstaller
         pyinstaller -F *.py
         tar -zcvf ${{ matrix.goos }}_${{ matrix.goarch }}.tar.gz dist
