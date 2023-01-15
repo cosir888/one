@@ -4,7 +4,7 @@ on:
   push:
 jobs:
   build:
-    runs-on: [ubuntu-latest,windows-latest]
+    runs-on: windows-latest
     strategy:
       matrix:
         include:
@@ -16,8 +16,8 @@ jobs:
             goos: linux
           - goarch: arm64
             goos: darwin
-         # - goarch: amd64
-           # goos: windows
+          - goarch: amd64
+            goos: windows
     steps:
     - uses: actions/checkout@master
     - name: 打包当前文件
