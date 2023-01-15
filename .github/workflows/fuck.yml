@@ -24,8 +24,9 @@ jobs:
     - name: 打包当前文件
       run: |
         uname -a
-        pip install pyinstaller
-        pyinstaller -F *.py
+        ls
+       # pip install pyinstaller
+        #pyinstaller -F *.py
        # tar -zcvf ${{ matrix.goos }}_${{ matrix.goarch }}.tar.gz dist
         
     - name: 发布打包程序
