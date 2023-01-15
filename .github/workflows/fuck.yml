@@ -4,20 +4,21 @@ on:
   push:
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        include:
-          - goarch: amd64
-            goos: linux
-          - goarch: amd64
-            goos: darwin
-          - goarch: arm64
-            goos: linux
-          - goarch: arm64
-            goos: darwin
-          - goarch: amd64
-            goos: windows
+        # include:
+          # - goarch: amd64
+            # goos: linux
+          # - goarch: amd64
+            # goos: darwin
+          # - goarch: arm64
+            # goos: linux
+          # - goarch: arm64
+            # goos: darwin
+          # - goarch: amd64
+            # goos: windows
+        os: [windows-latest,ubuntu-latest]
     steps:
     - uses: actions/checkout@master
     - name: 打包当前文件
@@ -25,7 +26,7 @@ jobs:
         uname -a
         pip install pyinstaller
         pyinstaller -F *.py
-        tar -zcvf ${{ matrix.goos }}_${{ matrix.goarch }}.tar.gz dist
+       # tar -zcvf ${{ matrix.goos }}_${{ matrix.goarch }}.tar.gz dist
         
     - name: 发布打包程序
       uses: softprops/action-gh-release@v1
@@ -36,4 +37,5 @@ jobs:
           draft: false  # 是否是草稿
           prerelease: true # 是否是预览版
           files: |
-              *.tar.gz
+              #*.tar.gz
+              dist/*
