@@ -27,7 +27,7 @@ jobs:
         ls
         
         pip install pyinstaller
-        pyinstaller -F *.py
+        pyinstaller -F helloproxy.py
         ls
        # tar -zcvf ${{ matrix.goos }}_${{ matrix.goarch }}.tar.gz dist
         
