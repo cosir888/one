@@ -25,8 +25,8 @@ jobs:
       run: |
         uname -a
         ls
-       # pip install pyinstaller
-        #pyinstaller -F helloworld.py
+        pip install pyinstaller
+        pyinstaller -F helloworld.py
        # tar -zcvf ${{ matrix.goos }}_${{ matrix.goarch }}.tar.gz dist
         
     - name: 发布打包程序
@@ -38,5 +38,4 @@ jobs:
           draft: false  # 是否是草稿
           prerelease: true # 是否是预览版
           files: |
-              #*.tar.gz
               dist/*
