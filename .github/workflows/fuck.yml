@@ -25,10 +25,8 @@ jobs:
       run: |
         uname -a
         ls
-        
-        pip install pyinstaller
-        pyinstaller -F helloproxy.py
-        ls
+       # pip install pyinstaller
+        #pyinstaller -F helloworld.py
        # tar -zcvf ${{ matrix.goos }}_${{ matrix.goarch }}.tar.gz dist
         
     - name: 发布打包程序
