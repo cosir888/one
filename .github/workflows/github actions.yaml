@@ -1,7 +1,8 @@
 name: 点击start执行流
 
 on: 
-  push:
+#取消下方注释可以push执行流
+  #push:
     #branches:
     #- 'main'
   watch:
@@ -22,4 +23,6 @@ jobs:
           architecture: 'x64'
       # You can test your matrix by printing the current Python version
       - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
+        run: |
+          python -c "import sys; print(sys.version)"
+          uname -a
