@@ -1,4 +1,4 @@
-.name: Python package
+name: 点击start执行流
 
 on: 
   push:
